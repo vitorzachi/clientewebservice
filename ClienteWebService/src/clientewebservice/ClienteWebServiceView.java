@@ -47,7 +47,7 @@ public class ClienteWebServiceView extends FrameView {
         });
         idleIcon = resourceMap.getIcon("StatusBar.idleIcon");
         statusAnimationLabel.setIcon(idleIcon);
-        progressBar.setVisible(false);
+
 
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
@@ -60,22 +60,18 @@ public class ClienteWebServiceView extends FrameView {
                         busyIconIndex = 0;
                         busyIconTimer.start();
                     }
-                    progressBar.setVisible(true);
-                    progressBar.setIndeterminate(true);
+                  
                 } else if ("done".equals(propertyName)) {
                     busyIconTimer.stop();
                     statusAnimationLabel.setIcon(idleIcon);
-                    progressBar.setVisible(false);
-                    progressBar.setValue(0);
+                  
                 } else if ("message".equals(propertyName)) {
                     String text = (String)(evt.getNewValue());
                     statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
                     int value = (Integer)(evt.getNewValue());
-                    progressBar.setVisible(true);
-                    progressBar.setIndeterminate(false);
-                    progressBar.setValue(value);
+                  
                 }
             }
         });
@@ -105,17 +101,14 @@ public class ClienteWebServiceView extends FrameView {
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMIVenda = new javax.swing.JMenuItem();
+        jMIDebito = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
         javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -127,7 +120,7 @@ public class ClienteWebServiceView extends FrameView {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -147,41 +140,31 @@ public class ClienteWebServiceView extends FrameView {
         jMenu1.setText(resourceMap.getString("jMenuTransacao.text")); // NOI18N
         jMenu1.setName("jMenuTransacao"); // NOI18N
 
-        jMenuItem1.setText(resourceMap.getString("jMenuItemIncluir.text")); // NOI18N
-        jMenuItem1.setName("jMenuItemIncluir"); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        jMIVenda.setText(resourceMap.getString("jMenuItemIncluir.text")); // NOI18N
+        jMIVenda.setName("jMenuItemIncluir"); // NOI18N
+        jMIVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMIVendaMousePressed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMIVenda);
 
-        jMenuItem2.setText(resourceMap.getString("jMenuItemReceber.text")); // NOI18N
-        jMenuItem2.setName("jMenuItemReceber"); // NOI18N
-        jMenu1.add(jMenuItem2);
+        jMIDebito.setText(resourceMap.getString("jMenuItemReceber.text")); // NOI18N
+        jMIDebito.setName("jMenuItemReceber"); // NOI18N
+        jMIDebito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMIDebitoMousePressed(evt);
+            }
+        });
+        jMenu1.add(jMIDebito);
 
         menuBar.add(jMenu1);
         jMenu1.getAccessibleContext().setAccessibleName(resourceMap.getString("jMenu1.AccessibleContext.accessibleName")); // NOI18N
-
-        jMenu2.setText(resourceMap.getString("jMCadastro.text")); // NOI18N
-        jMenu2.setName("jMCadastro"); // NOI18N
-
-        jMenuItem3.setText(resourceMap.getString("jMICadCliente.text")); // NOI18N
-        jMenuItem3.setName("jMICadCliente"); // NOI18N
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem3MouseClicked(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        menuBar.add(jMenu2);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
-        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         aboutMenuItem.setText(resourceMap.getString("aboutMenuItem.text")); // NOI18N
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
@@ -197,8 +180,6 @@ public class ClienteWebServiceView extends FrameView {
         statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
 
-        progressBar.setName("progressBar"); // NOI18N
-
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
@@ -207,9 +188,7 @@ public class ClienteWebServiceView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                 .addComponent(statusAnimationLabel)
                 .addContainerGap())
         );
@@ -220,8 +199,7 @@ public class ClienteWebServiceView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statusMessageLabel)
-                    .addComponent(statusAnimationLabel)
-                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(statusAnimationLabel))
                 .addGap(3, 3, 3))
         );
 
@@ -230,23 +208,22 @@ public class ClienteWebServiceView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       new IncluirCredito();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMIVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMIVendaMousePressed
+        Venda venda=new Venda();
+     venda.setVisible(true);  
+    }//GEN-LAST:event_jMIVendaMousePressed
 
-    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-       new CadCliente();
-    }//GEN-LAST:event_jMenuItem3MouseClicked
+    private void jMIDebitoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMIDebitoMousePressed
+Debito debito=new Debito();
+debito.setVisible(true);
+    }//GEN-LAST:event_jMIDebitoMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMIDebito;
+    private javax.swing.JMenuItem jMIVenda;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;

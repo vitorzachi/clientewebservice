@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="246" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="266" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -63,36 +63,22 @@
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="jMenu1.AccessibleContext.accessibleName"/>
           </AccessibilityProperties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMIVenda">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="jMenuItemIncluir.text"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemIncluir" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMIVendaMousePressed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jMIDebito">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="jMenuItemReceber.text"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemReceber" noResource="true"/>
               </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jMCadastro.text"/>
-            <Property name="name" type="java.lang.String" value="jMCadastro" noResource="true"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jMICadCliente.text"/>
-                <Property name="name" type="java.lang.String" value="jMICadCliente" noResource="true"/>
-              </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem3MouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMIDebitoMousePressed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -111,9 +97,6 @@
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="clientewebservice.ClienteWebServiceView" id="showAboutBox" methodName="showAboutBox"/>
-                </Property>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="F1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="aboutMenuItem.text"/>
                 <Property name="name" type="java.lang.String" value="aboutMenuItem" noResource="true"/>
@@ -139,9 +122,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="214" max="32767" attributes="0"/>
-                  <Component id="progressBar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="376" max="32767" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -155,7 +136,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="statusMessageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="statusAnimationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="progressBar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               </Group>
@@ -185,15 +165,6 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JProgressBar" name="progressBar">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="progressBar" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
