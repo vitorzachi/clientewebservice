@@ -14,6 +14,11 @@ import org.apache.axis.client.Service;
  */
 public class IncluirCredito {
 
+    public IncluirCredito() {
+        
+    }
+
+
     public void Incluir() throws ServiceException, RemoteException {
         //Endereço, local onde encontra-se o Web Service
         String local = "http://localhost:8080/axis/TransacaoWS";
