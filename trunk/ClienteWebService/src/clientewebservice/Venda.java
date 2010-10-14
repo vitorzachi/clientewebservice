@@ -8,8 +8,9 @@
  *
  * Created on 30/09/2010, 19:48:15
  */
-
 package clientewebservice;
+
+import clientewebservice.resources.service.IncluirCredito;
 
 /**
  *
@@ -121,6 +122,11 @@ public class Venda extends javax.swing.JFrame {
 
         jBGravar.setText(resourceMap.getString("jBGravar.text")); // NOI18N
         jBGravar.setName("jBGravar"); // NOI18N
+        jBGravar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBGravarMouseClicked(evt);
+            }
+        });
 
         jBSair.setText(resourceMap.getString("jBSair.text")); // NOI18N
         jBSair.setName("jBSair"); // NOI18N
@@ -206,20 +212,35 @@ public class Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jBBuscarMouseClicked
 
     private void jBSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSairMouseClicked
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBSairMouseClicked
 
+    private void jBGravarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGravarMouseClicked
+     IncluirCredito incluirCredito = new IncluirCredito();
+       /* try {
+            incluirCredito.Incluir(jCBCliente.getSelectedItem());
+                    //(Float.parseFloat(jtfValorItens.getText()), clientes.get((String) jcomboCliente.getSelectedItem()));
+            percorreTable(in.getUltimoIDMarmita());
+        } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/
+    }//GEN-LAST:event_jBGravarMouseClicked
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Venda().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBGravar;
@@ -237,5 +258,4 @@ this.dispose();
     private javax.swing.JTextField jTFTotal;
     private javax.swing.JTable jTVenda;
     // End of variables declaration//GEN-END:variables
-
 }

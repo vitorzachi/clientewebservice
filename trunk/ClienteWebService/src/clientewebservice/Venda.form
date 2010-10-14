@@ -239,6 +239,9 @@
         <Property name="text" type="java.lang.String" resourceKey="jBGravar.text"/>
         <Property name="name" type="java.lang.String" value="jBGravar" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBGravarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBSair">
       <Properties>
